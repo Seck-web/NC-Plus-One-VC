@@ -1,4 +1,3 @@
-"""Create and seed the NC Plus One PostgreSQL tables from JSON fixtures."""
 import json
 from pathlib import Path
 
@@ -53,12 +52,7 @@ def _set_sequence_to_max(cur, table, column):
 
 
 def seed_nc_plus_one(conn, data_dir=DATA_DIR):
-    """Create tables and seed all fixture data in one transaction.
 
-    Fixture order provides user, venue, and event IDs matching the references
-    in events.json and rsvps.json. Existing fixture records are updated, and
-    duplicate RSVP pairs are skipped. The caller closes the connection.
-    """
     users = _read_json(data_dir, "users.json")
     venues = _read_json(data_dir, "venues.json")
     events = _read_json(data_dir, "events.json")
